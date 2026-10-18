@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre lo nuestro - Puerto Rico, Caquetá, Colombia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --verde-oscuro: #0F4D38;
+            --verde-claro: #2E8B57;
+            --beige: #F8F5E6;
+            --dorado: #D4B86A;
+            --texto: #2C3E2F;
+        }
+
+        body {
+            background-color: var(--beige);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--verde-oscuro);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            font-size: 1rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--dorado);
+        }
+
+        .btn-inicio {
+            background-color: var(--verde-claro);
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+
+        .hero {
+            position: relative;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1432405972618-c60b1c5a4362?w=1200') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+            color: white;
+        }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-map-section {
+            position: absolute;
+            right: 50px;
+            top: 50px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            color: var(--texto);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-placeholder {
+            width: 280px;
+            height: 200px;
+            background: #E8E4D0;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        .categorias {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .cat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .destinos {
+            padding: 50px;
+        }
+
+        .destinos h2 {
+            font-size: 1.8rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .destinos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .destino-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .destino-img {
+            height: 200px;
+            background: #ccc;
+        }
+
+        .destino-card h3 {
+            padding: 15px 15px 5px;
+            color: var(--verde-oscuro);
+        }
+
+        .destino-card p {
+            padding: 0 15px 15px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .btn-conoce {
+            margin: 0 15px 15px;
+            padding: 8px 20px;
+            background-color: var(--verde-oscuro);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-conoce:hover {
+            background-color: var(--verde-claro);
+        }
+
+        .apoyo-seccion {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .apoyo-seccion h3 {
+            color: var(--verde-oscuro);
+            margin-bottom: 15px;
+        }
+
+        .apoyo-botones {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-artesanias {
+            background: #7B4B94;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-productos {
+            background: var(--verde-claro);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: var(--verde-oscuro);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media(max-width: 900px) {
+            .hero-map-section {
+                position: static;
+                margin-top: 30px;
+            }
+            .hero {
+                flex-direction: column;
+                height: auto;
+                padding: 30px;
+                text-align: center;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Encabezado / Navegación -->
+<header>
+    <div class="logo">
+        🌿 Descubre lo nuestro<br>
+        <span>Puerto Rico, Caquetá, Colombia</span>
+    </div>
+    <nav>
+        <a href="#" class="btn-inicio">Inicio</a>
+        <a href="#">Destinos</a>
+        <a href="#">Nuestra gente</a>
+        <a href="#">Artesanías y productos</a>
+        <a href="#">Contacto</a>
+        <a href="#">🔍</a>
+    </nav>
+</header>
+
+<!-- Sección Principal / Hero -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>Descubre lo nuestro</h1>
+        <h2>Puerto Rico, Caquetá, Colombia</h2>
+        <p>Explora cascadas, quebradas, miradores y la riqueza natural de nuestro territorio.</p>
+    </div>
+
+    <div class="hero-map-section">
+        <div class="map-placeholder">🗺️ Mapa de la región</div>
+        <div class="categorias">
+            <div class="cat-item">💧 Cascadas</div>
+            <div class="cat-item">🌊 Quebradas y charcos</div>
+            <div class="cat-item">⛰️ Miradores</div>
+            <div class="cat-item">🛍️ Artesanías y productos locales</div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de Destinos -->
+<section class="destinos">
+    <h2>🌿 Nuestros destinos <span style="margin-left: auto; font-style: italic; font-size: 1rem; color: #666;">Vive la naturaleza, apoya lo nuestro</span></h2>
+
+    <div class="destinos-grid">
+        <!-- Cascada el Salado -->
+        <div class="destino-card">
+            <div class="destino-img" style="background: url('https://images.unsplash.com/photo-1432405972618-c660b1c5a4362?w=600') center/cover no-repeat;"></div>
+            <h3>💧 Cascada el Salado</h3>
+            <p>Un lugar perfecto para disfrutar de la naturaleza, el sonido del agua y la frescura del bosque.</p>
+            <button class="btn-conoce">Conoce más</button>
+        </div>
+
+        <!-- Quebrada La Esmeralda -->
+        <div class="destino-card">
+            <div class="destino-img" style="background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600') center/cover no-repeat;"></div>
+            <h3>🌊 Quebrada La Esmeralda</h3>
+            <p>Aguas cristalinas, charcos naturales y un entorno ideal para relajarse y conectar con la naturaleza.</p>
+            <button class="btn-conoce">Conoce más →</button>
+        </div>
+
+        <!-- Miradores -->
+        <div class="destino-card">
+            <div class="destino-img" style="background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600') center/cover no-repeat;"></div>
+            <h3>⛰️ Miradores</h3>
+            <p>Desde aquí podrás admirar la belleza de nuestro territorio y sentir la grandeza de la Amazonía.</p>
+            <button class="btn-conoce">Conoce más</button>
+        </div>
+    </div>
+
+    <!-- Apoyo a familias -->
+    <div class="apoyo-seccion">
+        <h3>👥 Apoya a nuestras familias</h3>
+        <p>Con tu visita y compra, impulsas el trabajo de nuestras familias, valoras sus tradiciones y contribuyes al desarrollo sostenible de la región.</p>
+        
+        <div class="apoyo-botones">
+            <button class="btn-artesanias">🛍️ Artesanías</button>
+            <button class="btn-productos">🌿 Productos locales</button>
+        </div>
+    </div>
+</section>
+
+<!-- Pie de página -->
+<footer>
+    <p>🌿 Turismo sostenible • Comunidad • Naturaleza • Cultura</p>
+    <p style="margin-top: 10px; font-size: 0.9rem;">Puerto Rico, Caquetá, Colombia — Naturaliza cultura y gente amable</p>
+</footer>
+
+</body>
+</html>
